@@ -10,9 +10,12 @@ public class Reserve {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @JoinColumn(name = "id_books", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_books", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
+    @JoinColumn(name = "id_digital", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Digital digital;
     @JoinColumn(name = "id_members", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Member member;
@@ -54,6 +57,19 @@ public class Reserve {
         eMail = member.getEMail();
     }
 
+    public Reserve(Digital digital, Member member, LocalDate pickUpDate) {
+        this.digital = digital;
+        this.member = member;
+        this.pickUpDate = pickUpDate;
+        title = digital.getTitle();
+        author = digital.getAuthors();
+        depot = digital.getDepot();
+        firstName = member.getFirstName();
+        lastName = member.getLastName();
+        eMail = member.getEMail();
+
+    }
+
     public int getId() {
         return id;
     }
@@ -68,6 +84,14 @@ public class Reserve {
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    public Digital getDigital() {
+        return digital;
+    }
+
+    public void setDigital(Digital digital) {
+        this.digital = digital;
     }
 
     public Member getMember() {

@@ -1,9 +1,9 @@
 package be.kokw.restserver.controllers;
 
-import be.kokw.restserver.entities.Book;
+import be.kokw.restserver.entities.Digital;
 import be.kokw.restserver.entities.Member;
 import be.kokw.restserver.entities.Reserve;
-import be.kokw.restserver.repositories.BookRepo;
+import be.kokw.restserver.repositories.DigitalRepo;
 import be.kokw.restserver.repositories.MemberRepo;
 import be.kokw.restserver.repositories.ReserveRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 
 @RestController
-public class ReserveBookController {
-    private BookRepo bookRepo;
+public class ReserveDigitalController {
+    private DigitalRepo digitalRepo;
     private MemberRepo memberRepo;
     private ReserveRepo reserveRepo;
 
     @Autowired
-    private void setBookRepo(BookRepo repo){
-        bookRepo = repo;
+    private void setDigitalRepo(DigitalRepo repo){
+        digitalRepo = repo;
     }
 
     @Autowired
@@ -36,12 +36,12 @@ public class ReserveBookController {
         reserveRepo = repo;
     }
 
-    @PostMapping("/book/{firstName}/{lastName}/{title}/{pickupDate}")
+    @PostMapping("/digital/{firstName}/{lastName}/{title}/{pickupDate}")
     public ResponseEntity<Reserve> handleReserveBookByMemberNameAndBookTitle(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName,
                                                                               @PathVariable("title") String title, @PathVariable("pickupDate") LocalDate pickupDate){
-        Book book = bookRepo.findBooksByTitle(title);
+        Digital digital = digitalRepo.findDigitalByTitle(title);
         Member member = memberRepo.findMemberByFirstNameAndLastName(firstName,lastName);
-        Reserve reserved = new Reserve(book,member,pickupDate);
+        Reserve reserved = new Reserve(digital,member,pickupDate);
         HttpStatus status;
         if(reserved.getId() != 0){
             status = HttpStatus.OK;

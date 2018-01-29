@@ -10,13 +10,16 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/members")
 public class BecomeMemberController {
-    @Autowired
-    MemberRepo repo;
+    private MemberRepo repo;
 
-    @PostMapping("/register")
-    public ResponseEntity<Object> createMember(@RequestBody Member m) {
+    @Autowired
+    private void setRepo(MemberRepo repo){
+        this.repo = repo;
+    }
+
+    @PostMapping("members/register{m}")
+    public ResponseEntity<Object> createMember(@PathVariable("m") Member m) {
         Member member = repo.save(m);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(member.getId()).toUri();

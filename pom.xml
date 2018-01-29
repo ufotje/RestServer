@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 
 	<name>restserver</name>
-	<description>Serverside for KOKWRestApp</description>
+	<description>ServerSide for KOKWRestApp</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -44,10 +44,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>

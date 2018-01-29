@@ -1,7 +1,7 @@
 package be.kokw.restserver.controllers;
 
-import be.kokw.restserver.entities.Book;
-import be.kokw.restserver.repositories.BookRepo;
+import be.kokw.restserver.entities.Digital;
+import be.kokw.restserver.repositories.DigitalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class SearchBookTitleController {
-    private BookRepo repo;
+public class SearchDigitalTitleController {
+    private DigitalRepo repo;
 
     @Autowired
-    private void setRepo(BookRepo repo){
+    private void setRepo(DigitalRepo repo) {
         this.repo = repo;
     }
 
-    @GetMapping( value = "/books/search{title}")
-    public ResponseEntity<Book> handleBooksByTitle(@PathVariable("title") String title) {
+    @GetMapping( value = "/search{title}")
+    public ResponseEntity<Digital> handleDigitalByTitle(@PathVariable("title") String title) {
 
-        return new ResponseEntity<>( repo.findBooksByTitle(title), HttpStatus.OK);
+        return new ResponseEntity<>( repo.findDigitalByTitle(title), HttpStatus.OK);
 
     }
 }
