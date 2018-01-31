@@ -20,7 +20,7 @@ public class SearchBookTopicController {
         this.repo = repo;
     }
 
-    @GetMapping( value = "/books/search{topic}")
+    @GetMapping( value = "/books/search/topic/{topic}")
     public ResponseEntity<List<Book>> handleBooksByTopic(@PathVariable("topic") String topic) {
 
         return new ResponseEntity<>( repo.findBooksByTopicContains(topic),HttpStatus.OK);

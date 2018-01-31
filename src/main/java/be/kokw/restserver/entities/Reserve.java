@@ -4,21 +4,19 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "reserved")
 public class Reserve {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
     @JoinColumn(name = "id_books", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
+    @JoinColumn(name = "id_members", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Member member;
     @JoinColumn(name = "id_digital", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Digital digital;
-    @JoinColumn(name = "id_members", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Member member;
     private String firstName;
     private String lastName;
     private String eMail;

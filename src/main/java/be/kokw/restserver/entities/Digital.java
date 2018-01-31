@@ -2,35 +2,23 @@ package be.kokw.restserver.entities;
 
 
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-@Table
 public class Digital {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-    @Column(name = "Depot")
     private String depot;
-    @Column(name = "Title")
     private String title;
-    @Column(name = "subtitles")
     private String subtitles;
-    @Column(name = "Edition")
     private int edition;
-    @Column(name = "Publisher")
     private String publisher;
-    @Column(name = "Year_Published")
     private int yearPublished;
-    @Column(name = "Bought_On")
     private LocalDate boughtOn;
-    @Column(name = "Derated")
     private LocalDate derated;
-    @Column(name = "Destination")
     private String destination;
-    @Column(name = "authors")
     private String authors;
     private String topics;
     private boolean donated;

@@ -4,28 +4,18 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "members")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "firstname")
     private String firstName;
-    @Column(name = "lastname")
     private String lastName;
-    @Column(name = "street")
     private String street;
-    @Column(name = "housenumber")
     private String houseNr;
-    @Column(name = "zip")
     private int zip;
-    @Column(name = "city")
     private String city;
-    @Column(name = "gender")
     private char gender;
-    @Column(name = "email", unique = true)
     private String eMail;
-    @Column(name = "birthday")
     private LocalDate bDay;
 
     public Member() {

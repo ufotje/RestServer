@@ -1,20 +1,19 @@
 package be.kokw.restserver.entities;
 
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "books")
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
     private String author;
     private String isbn;
     private String depot;
     private String topic;
-    @Column(name = "nr_of_pages")
     private String nrOfPages;
     private boolean inStock;
 

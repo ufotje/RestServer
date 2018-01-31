@@ -20,10 +20,13 @@ public class SearchBookAuthorController {
         this.repo = repo;
     }
 
-    @GetMapping( value = "/books/search{author}")
+    @GetMapping( value = "/books/search/author/{author}")
     public ResponseEntity<List<Book>> handleBooksByAuthor(@PathVariable("author") String author) {
-
-        return new ResponseEntity<>( repo.findBooksByAuthorContains(author), HttpStatus.OK);
-
+        List<Book> books = repo.findBooksByAuthorContains(author);
+        if(books.isEmpty()){
+            System.out.println("Lijst leeg!");
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>( books, HttpStatus.OK);
     }
 }

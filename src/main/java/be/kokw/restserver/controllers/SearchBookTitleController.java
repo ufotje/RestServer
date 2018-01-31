@@ -19,7 +19,7 @@ public class SearchBookTitleController {
         this.repo = repo;
     }
 
-    @GetMapping( value = "/books/search{title}")
+    @GetMapping( value = "/books/search/title/{title}")
     public ResponseEntity<Book> handleBooksByTitle(@PathVariable("title") String title) {
 
         return new ResponseEntity<>( repo.findBooksByTitle(title), HttpStatus.OK);
