@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 public class SearchBookTitleController {
@@ -20,7 +22,7 @@ public class SearchBookTitleController {
     }
 
     @GetMapping( value = "/books/search/title/{title}")
-    public ResponseEntity<Books> handleBooksByTitle(@PathVariable("title") String title) {
+    public ResponseEntity<List<Books>> handleBooksByTitle(@PathVariable("title") String title) {
 
         return new ResponseEntity<>( repo.findBooksByTitle(title), HttpStatus.OK);
 

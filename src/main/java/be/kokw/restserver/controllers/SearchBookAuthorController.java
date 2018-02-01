@@ -30,7 +30,6 @@ public class SearchBookAuthorController {
             System.out.println("Lijst leeg!");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        System.out.println(books.get(0));
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 }

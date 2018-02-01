@@ -12,7 +12,7 @@ public interface BookRepo extends JpaRepository<Books,Long>{
     List<Books> findBooksByTopicsContains(String topic);
 
     @Transactional
-    Books findBooksByTitle(String title);
+    List<Books> findBooksByTitle(String title);
 
     @Transactional
     List<Books> findBooksByAuthorsContains(String author);

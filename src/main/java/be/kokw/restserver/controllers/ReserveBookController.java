@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 public class ReserveBookController {
@@ -39,9 +40,9 @@ public class ReserveBookController {
     @PostMapping("/book/{firstName}/{lastName}/{title}/{pickupDate}")
     public ResponseEntity<Reserve> handleReserveBookByMemberNameAndBookTitle(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName,
                                                                               @PathVariable("title") String title, @PathVariable("pickupDate") LocalDate pickupDate){
-        Books book = bookRepo.findBooksByTitle(title);
+        List<Books> book = bookRepo.findBooksByTitle(title);
         Member member = memberRepo.findMemberByFirstNameAndLastName(firstName,lastName);
-        Reserve reserved = new Reserve(book,member,pickupDate);
+        Reserve reserved = new Reserve(book.get(0),member,pickupDate);
         HttpStatus status;
         if(reserved.getId() != 0){
             status = HttpStatus.OK;
