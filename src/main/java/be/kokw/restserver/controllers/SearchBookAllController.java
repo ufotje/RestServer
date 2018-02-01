@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class SearchBookTopicController {
+public class SearchBookAllController {
     private BookRepo repo;
 
     @Autowired
@@ -20,10 +19,14 @@ public class SearchBookTopicController {
         this.repo = repo;
     }
 
-    @GetMapping( value = "/books/search/topic/{topic}")
-    public ResponseEntity<List<Books>> handleBooksByTopic(@PathVariable("topic") String topic) {
-
-        return new ResponseEntity<>( repo.findBooksByTopicsContains(topic),HttpStatus.OK);
-
+    @GetMapping( value = "/books/search/all")
+    public ResponseEntity<List<Books>> handleBooksByAuthor() {
+        List<Books> books = repo.findAll();
+        if(books.isEmpty()){
+            System.out.println("Lijst leeg!");
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        System.out.println(books.get(0));
+        return new ResponseEntity<>( books, HttpStatus.OK);
     }
 }

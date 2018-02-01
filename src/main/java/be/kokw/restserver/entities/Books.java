@@ -6,26 +6,26 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Book {
+public class Books {
     @Id
     private long id;
     private String title;
-    private String author;
+    private String authors;
     private String isbn;
     private String depot;
-    private String topic;
+    private String topics;
     private String nrOfPages;
     private boolean inStock;
 
-    public Book() {
+    public Books() {
     }
 
-    public Book(String title, String author, String isbn, String depot, String topic, String nrOfPages, boolean inStock) {
+    public Books(String title, String author, String isbn, String depot, String topic, String nrOfPages, boolean inStock) {
         this.title = title;
-        this.author = author;
+        this.authors = author;
         this.isbn = isbn;
         this.depot = depot;
-        this.topic = topic;
+        this.topics = topic;
         this.nrOfPages = nrOfPages;
         this.inStock = inStock;
     }
@@ -46,12 +46,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthors(String author) {
+        this.authors = author;
     }
 
     public String getIsbn() {
@@ -70,12 +70,12 @@ public class Book {
         this.depot = depot;
     }
 
-    public String getTopic() {
-        return topic;
+    public String getTopics() {
+        return topics;
     }
 
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public void setTopics(String topic) {
+        this.topics = topic;
     }
 
     public String getNrOfPages() {

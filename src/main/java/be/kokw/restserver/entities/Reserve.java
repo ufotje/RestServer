@@ -10,7 +10,7 @@ public class Reserve {
     private int id;
     @JoinColumn(name = "id_books", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Book book;
+    private Books book;
     @JoinColumn(name = "id_members", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Member member;
@@ -30,24 +30,24 @@ public class Reserve {
     public Reserve() {
     }
 
-    public Reserve(Book book, String firstName, String lastName, String eMail, LocalDate pickUpDate) {
+    public Reserve(Books book, String firstName, String lastName, String eMail, LocalDate pickUpDate) {
         this.book = book;
         this.firstName = firstName;
         this.lastName = lastName;
         this.eMail = eMail;
         this.pickUpDate = pickUpDate;
         title = book.getTitle();
-        author = book.getAuthor();
+        author = book.getAuthors();
         isbn = book.getIsbn();
         depot = book.getDepot();
     }
 
-    public Reserve(Book book, Member member, LocalDate pickUpDate) {
+    public Reserve(Books book, Member member, LocalDate pickUpDate) {
         this.book = book;
         this.member = member;
         this.pickUpDate = pickUpDate;
         title = book.getTitle();
-        author = book.getAuthor();
+        author = book.getAuthors();
         isbn = book.getIsbn();
         depot = book.getDepot();
         firstName = member.getFirstName();
@@ -76,11 +76,11 @@ public class Reserve {
         this.id = id;
     }
 
-    public Book getBook() {
+    public Books getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(Books book) {
         this.book = book;
     }
 

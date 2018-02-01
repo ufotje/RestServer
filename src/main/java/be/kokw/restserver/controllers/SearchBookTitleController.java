@@ -1,6 +1,6 @@
 package be.kokw.restserver.controllers;
 
-import be.kokw.restserver.entities.Book;
+import be.kokw.restserver.entities.Books;
 import be.kokw.restserver.repositories.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ public class SearchBookTitleController {
     }
 
     @GetMapping( value = "/books/search/title/{title}")
-    public ResponseEntity<Book> handleBooksByTitle(@PathVariable("title") String title) {
+    public ResponseEntity<Books> handleBooksByTitle(@PathVariable("title") String title) {
 
         return new ResponseEntity<>( repo.findBooksByTitle(title), HttpStatus.OK);
 

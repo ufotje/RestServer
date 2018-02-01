@@ -1,6 +1,6 @@
 package be.kokw.restserver.controllers;
 
-import be.kokw.restserver.entities.Book;
+import be.kokw.restserver.entities.Books;
 import be.kokw.restserver.entities.Member;
 import be.kokw.restserver.entities.Reserve;
 import be.kokw.restserver.repositories.BookRepo;
@@ -39,7 +39,7 @@ public class ReserveBookController {
     @PostMapping("/book/{firstName}/{lastName}/{title}/{pickupDate}")
     public ResponseEntity<Reserve> handleReserveBookByMemberNameAndBookTitle(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName,
                                                                               @PathVariable("title") String title, @PathVariable("pickupDate") LocalDate pickupDate){
-        Book book = bookRepo.findBooksByTitle(title);
+        Books book = bookRepo.findBooksByTitle(title);
         Member member = memberRepo.findMemberByFirstNameAndLastName(firstName,lastName);
         Reserve reserved = new Reserve(book,member,pickupDate);
         HttpStatus status;

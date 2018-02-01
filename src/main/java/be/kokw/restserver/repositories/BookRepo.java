@@ -1,19 +1,19 @@
 package be.kokw.restserver.repositories;
 
-import be.kokw.restserver.entities.Book;
+import be.kokw.restserver.entities.Books;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
-public interface BookRepo extends JpaRepository<Book,Long>{
+public interface BookRepo extends JpaRepository<Books,Long>{
     @Transactional
-    List<Book> findBooksByTopicContains(String topic);
+    List<Books> findBooksByTopicsContains(String topic);
 
     @Transactional
-    Book findBooksByTitle(String title);
+    Books findBooksByTitle(String title);
 
     @Transactional
-    List<Book> findBooksByAuthorContains(String author);
+    List<Books> findBooksByAuthorsContains(String author);
 }
