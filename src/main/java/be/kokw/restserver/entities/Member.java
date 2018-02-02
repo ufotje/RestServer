@@ -14,14 +14,14 @@ public class Member {
     private String houseNr;
     private int zip;
     private String city;
-    private char gender;
+    private String gender;
     private String eMail;
     private LocalDate bDay;
 
     public Member() {
     }
 
-    public Member(String firstName, String lastName, String street, String houseNr, int zip, String city, char gender, String eMail, LocalDate bDay) {
+    public Member(String firstName, String lastName, String street, String houseNr, int zip, String city, String gender, String eMail, LocalDate bDay) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -89,11 +89,11 @@ public class Member {
         this.city = city;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
