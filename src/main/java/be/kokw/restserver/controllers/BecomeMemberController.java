@@ -18,7 +18,7 @@ public class BecomeMemberController {
         this.repo = repo;
     }
 
-    @PostMapping("members/register{m}")
+    @PostMapping("members/register/{m}")
     public ResponseEntity<Object> createMember(@PathVariable("m") Member m) {
         Member member = repo.save(m);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
